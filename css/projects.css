@@ -1,17 +1,62 @@
 .projects {
   background-color: #f8f9fa;
+  padding: 4rem 0;
 }
 
 .projects h2 {
   text-align: center;
   font-size: 2.5rem;
   margin-bottom: 3rem;
+  max-width: 800px;
+  margin-left: auto;
+  margin-right: auto;
 }
 
 .projects-grid {
   display: grid;
-  grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
+  grid-template-columns: repeat(3, 1fr);
   gap: 1.5rem;
+}
+
+/* Responsive styles for projects section */
+@media (max-width: 992px) {
+  .projects {
+    padding: 3rem 0;
+  }
+  
+  .projects h2 {
+    font-size: 2.2rem;
+    margin-bottom: 2.5rem;
+  }
+  
+  .projects-grid {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
+
+@media (max-width: 768px) {
+  .projects {
+    padding: 2.5rem 0;
+  }
+  
+  .projects h2 {
+    font-size: 2rem;
+    margin-bottom: 2rem;
+  }
+}
+
+@media (max-width: 480px) {
+  .projects {
+    padding: 2rem 0;
+  }
+  
+  .projects-grid {
+    grid-template-columns: 1fr;
+  }
+  
+  .project-card {
+    height: 180px;
+  }
 }
 
 .project-card {

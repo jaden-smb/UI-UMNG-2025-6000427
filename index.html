@@ -21,16 +21,14 @@
     <link rel="import" href="components/financing.html">
     <link rel="import" href="components/footer.html">
 
-    <div id="components-container">
-    </div>
-
+    <div id="components-container"></div>    
     <script>
         document.addEventListener('DOMContentLoaded', function() {
             const supportsImports = 'import' in document.createElement('link');
             
             if (!supportsImports) {
                 const container = document.getElementById('components-container');
-                const links = document.querySelectorAll('link[rel="import"]');
+                const links = Array.from(document.querySelectorAll('link[rel="import"]'));
                 
                 const loadComponent = async (url) => {
                     try {
@@ -43,12 +41,14 @@
                     }
                 };
                 
-                links.forEach(async (link) => {
-                    const componentContent = await loadComponent(link.getAttribute('href'));
-                    const div = document.createElement('div');
-                    div.innerHTML = componentContent;
-                    container.appendChild(div);
-                });
+                (async function loadComponentsInOrder() {
+                    for (const link of links) {
+                        const componentContent = await loadComponent(link.getAttribute('href'));
+                        const div = document.createElement('div');
+                        div.innerHTML = componentContent;
+                        container.appendChild(div);
+                    }
+                })();
             }
         });
     </script>
