@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>SANTIAGO MONTOYA BAITER</title>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="css/main.css">
+</head>
+<body>
+    <link rel="import" href="components/header.html">
+    <link rel="import" href="components/hero.html">
+    <link rel="import" href="components/skills.html">
+    <link rel="import" href="components/stats.html">
+    <link rel="import" href="components/try-lesson.html">
+    <link rel="import" href="components/community.html">
+    <link rel="import" href="components/more-features.html">
+    <link rel="import" href="components/testimonials.html">
+    <link rel="import" href="components/projects.html">
+    <link rel="import" href="components/pricing.html">
+    <link rel="import" href="components/financing.html">
+    <link rel="import" href="components/footer.html">
+
+    <div id="components-container">
+    </div>
+
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            const supportsImports = 'import' in document.createElement('link');
+            
+            if (!supportsImports) {
+                const container = document.getElementById('components-container');
+                const links = document.querySelectorAll('link[rel="import"]');
+                
+                const loadComponent = async (url) => {
+                    try {
+                        const response = await fetch(url);
+                        const text = await response.text();
+                        return text;
+                    } catch (error) {
+                        console.error('Error loading component:', error);
+                        return '';
+                    }
+                };
+                
+                links.forEach(async (link) => {
+                    const componentContent = await loadComponent(link.getAttribute('href'));
+                    const div = document.createElement('div');
+                    div.innerHTML = componentContent;
+                    container.appendChild(div);
+                });
+            }
+        });
+    </script>
+</body>
+</html> 

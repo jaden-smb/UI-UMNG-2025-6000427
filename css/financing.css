@@ -1,0 +1,29 @@
+.financing {
+  background-color: var(--background-color);
+  text-align: center;
+  padding: 4rem 0;
+}
+
+.financing h2 {
+  font-size: 2.5rem;
+  margin-bottom: 1rem;
+}
+
+.financing-tag {
+  display: inline-block;
+  background-color: var(--accent-color);
+  color: var(--text-color);
+  padding: 0.5rem 1rem;
+  border-radius: 20px;
+  font-size: 0.75rem;
+  font-weight: 700;
+  margin-bottom: 1rem;
+  letter-spacing: 1px;
+}
+
+.financing p {
+  font-size: 1.2rem;
+  color: #555;
+  max-width: 600px;
+  margin: 0 auto;
+} 
